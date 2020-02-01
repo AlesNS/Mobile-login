@@ -98,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/confPass" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/loginHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -116,8 +116,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/loginHere"
         app:layout_constraintVertical_bias="0.23000002"
-        tools:visibility="visible" />
+        tools:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
