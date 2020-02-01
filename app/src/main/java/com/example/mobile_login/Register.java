@@ -34,7 +34,6 @@ public class Register extends AppCompatActivity {
         mUsername = findViewById(R.id.enterName);
         mEmail = findViewById(R.id.enterEmail);
         mPassword = findViewById(R.id.enterPass);
-        mConfPassword = findViewById(R.id.confPass);
         mRegister = findViewById(R.id.buttonSubmit);
         loginHere = findViewById(R.id.loginHere);
 
@@ -54,7 +53,6 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
-                String conf_pass = mConfPassword.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is required");
@@ -62,10 +60,6 @@ public class Register extends AppCompatActivity {
                 }
                 if(TextUtils.isEmpty(password)){
                     mPassword.setError("Password is required");
-                    return;
-                }
-                if(password != conf_pass){
-                    mConfPassword.setError("Passwords don't match!");
                     return;
                 }
                 if(password.length() < 6){
