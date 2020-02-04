@@ -36,7 +36,7 @@
         android:layout_height="45dp"
         android:layout_marginTop="180dp"
         android:ems="10"
-        android:hint="@string/name_enter"
+        android:hint="@string/full_name"
         android:inputType="textPersonName"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
