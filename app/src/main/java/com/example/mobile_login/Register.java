@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
 
-    EditText mUsername, mPassword, mConfPassword, mEmail;
+    EditText mUsername, mPassword, mEmail;
     Button mRegister;
     TextView loginHere;
     FirebaseAuth fAuth;
