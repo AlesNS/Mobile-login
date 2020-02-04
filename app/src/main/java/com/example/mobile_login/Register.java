@@ -32,10 +32,10 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mUsername = findViewById(R.id.enterName);
-        mEmail = findViewById(R.id.enterEmail);
-        mPassword = findViewById(R.id.enterPass);
-        mRegister = findViewById(R.id.buttonSubmit);
-        loginHere = findViewById(R.id.loginHere);
+        mEmail = findViewById(R.id.email);
+        mPassword = findViewById(R.id.password);
+        mRegister = findViewById(R.id.registerBtn);
+        loginHere = findViewById(R.id.createAcc);
 
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
@@ -66,24 +66,34 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
 
+                progressBar.setVisibility(View.VISIBLE);
                 // register the user in firebase
 
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if(task.isSuccessful()){
                             Toast.makeText(Register.this,"User Created", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
                             Toast.makeText(Register.this,"Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
 
 
 
+            }
+        });
+
+
+        loginHere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Login.class));
             }
         });
 
