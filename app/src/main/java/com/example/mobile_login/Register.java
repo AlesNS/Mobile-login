@@ -17,15 +17,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Register extends AppCompatActivity {
 
     EditText mUsername, mPassword, mEmail;
     Button mRegister;
     TextView loginHere;
-    FirebaseAuth fAuth;
+    FirebaseAuth fAuth; // authentication
     ProgressBar progressBar;
-
+    FirebaseFirestore fStore; // database
+    String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,9 @@ public class Register extends AppCompatActivity {
         loginHere = findViewById(R.id.createAcc);
 
         fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);
+
 
         if(fAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
@@ -52,6 +57,8 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
+                String fullname = mUsername.getText().toString();
+
 
                 if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is required");
@@ -76,6 +83,9 @@ public class Register extends AppCompatActivity {
 
                         if(task.isSuccessful()){
                             Toast.makeText(Register.this,"User Created", Toast.LENGTH_SHORT).show();
+                            userID = fAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = fStore.collection("users").document(userID);
+
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
                             Toast.makeText(Register.this,"Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
