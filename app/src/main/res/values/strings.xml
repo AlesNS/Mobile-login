@@ -13,4 +13,11 @@
     <string name="email">Email</string>
     <string name="already_registered_login_here">Already registered? Login Here</string>
     <string name="new_here">New Here? Create an account</string>
+    <string name="logout">Logout</string>
+    <string name="you_date_of_birth">You date of birth</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_email_address">Your email address</string>
+    <string name="todo">your picture</string>
+    <string name="dob_enter">Date of birth</string>
 </resources>
